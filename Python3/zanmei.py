@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 
 file = open('context1.log', 'ab')
 try:
-    for x in range(216, 401):
+    for x in range(1, 401):
         if x < 10:
             xx = '00%d' % x
         elif 10 <= x < 100:
@@ -20,7 +20,7 @@ try:
         txt = soup.find('div', class_='TitleLinks').text
         title = txt[txt.find("《"): txt.find("》")+1]
         content = txt[txt.find("》")+1:].replace('\r\n', '<br>')
-        sql = "insert into hymn(title,content) values('%s','%s');\r\n" % (title, content)
+        sql = "insert into hymn(hid, title,content) values('%s', %s','%s');\r\n" % (xx, title, content)
         file.write(sql.encode('utf-8'))
         print(x)
         print(url)
