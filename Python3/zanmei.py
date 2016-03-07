@@ -13,6 +13,13 @@ try:
         else:
             xx = x
         url = 'http://www.jonahome.net/files/zmsg/zmsgc/zhanmeishi/Hymn%s.htm' % xx
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+            "accept-encoding": "gzip, deflate, sdch",
+            "accept-language": "zh-CN,zh;q=0.8",
+            "Referer": "https://www.exploit-db.com/"
+        }
         r = requests.get(url)
         r.encoding = 'gb2312'
         soup = BeautifulSoup(r.text, "html.parser")
@@ -26,3 +33,5 @@ try:
         print(url)
 finally:
     file.close()
+
+
